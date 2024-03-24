@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+package com.maytione.grpc.demo;
+
+message Car {
+  string model = 1;
+  string manufacturer = 2;
+  string vin = 3;
+}
+
+message CarList {
+  repeated Car car = 1;
+}
+
+message Vin {
+    string number = 1;
+}
+
+service CarService {
+  rpc createCars(CarList) returns (CarList);
+  rpc findCarByVinNumber(Vin) returns (Car);
+}
